@@ -1,0 +1,9 @@
+{
+  "name": "clarity-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  },
+  "dependencies": {}
+}
