@@ -1,7 +1,7 @@
-// Vercel Edge Function — fetch recent Strava activities
+export const config = { runtime: 'edge' };
+
 export default async function handler(req) {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
-
   try {
     const { access_token, after } = await req.json();
     const params = new URLSearchParams({ per_page: '30', ...(after ? { after } : {}) });
@@ -19,5 +19,3 @@ export default async function handler(req) {
     });
   }
 }
-
-export const config = { runtime: 'edge' };
