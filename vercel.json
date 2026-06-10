@@ -1,6 +1,1 @@
-{
-  "functions": {
-    "api/strava-exchange.js": { "runtime": "edge" },
-    "api/strava-activities.js": { "runtime": "edge" }
-  }
-}
+{}
