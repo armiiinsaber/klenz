@@ -1636,16 +1636,19 @@ let obSelectedSubs = [];
 let obSubConfigs = {};
 let obCustomSubs = [];
 
+var _obRAF = null;
+var _obSized = false;
 function initOnboarding(){
   buildObSubGrid();
-  drawObRings();
+  _obSized = false;
+  // wait a frame so the canvas is laid out, then start the loop
+  requestAnimationFrame(()=>{ if(!_obRAF) drawObRings(); });
 }
 
-let _obRAF = null;
-let _obSized = false;
 function drawObRings(){
   const canvas = document.getElementById('ob-rings-canvas');
   if(!canvas){ _obRAF=null; return; }
+  if(canvas.offsetParent===null && !document.getElementById('ob-p1')?.classList.contains('active')){ _obRAF=null; return; }
   const dpr = window.devicePixelRatio||1;
   const size = 160;
   if(!_obSized){
