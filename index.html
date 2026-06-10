@@ -4,6 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="apple-mobile-web-app-title" content="Klenz"/>
+  <meta name="theme-color" content="#0d0f0e"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <title>Klenz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -40,8 +46,8 @@ html,body{
   -webkit-font-smoothing:antialiased;
   -webkit-text-size-adjust:100%;
 }
-#app,#screen-onboard,#screen-main,#ob{background:#7ecec4!important}
-.screen,.tab,.fstep,#checkin-flow,#edit-today{background:#7ecec4!important}
+#app,#screen-onboard,#screen-main,#ob{background:#0d0f0e!important}
+.screen,.tab,.fstep,#checkin-flow,#edit-today{background:#0d0f0e!important}
 
 /* Subtle grain */
 body::after{
@@ -88,7 +94,7 @@ input,textarea,select{font-size:16px!important}
 .btn,.chip,.goal-pill,.cf-btn,.energy-btn,.et-row{position:relative;overflow:hidden}
 .ripple{
   position:absolute;border-radius:50%;
-  background:rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.07);
   pointer-events:none;
   animation:tapRipple .5s ease-out both;
   transform:scale(0);
@@ -111,7 +117,7 @@ input,textarea,select{font-size:16px!important}
 /* ── NAV ── */
 .nav{
   display:flex;justify-content:space-between;align-items:center;
-  padding:54px 20px 12px;
+  padding:calc(env(safe-area-inset-top, 0px) + 14px) 20px 12px;
   background:rgba(13,15,14,0.9);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   position:sticky;top:0;z-index:50;
@@ -155,7 +161,7 @@ input,textarea,select{font-size:16px!important}
 .bnav-icon{font-size:20px;line-height:1}
 
 /* ── TABS ── */
-.tab{display:none;flex-direction:column;padding-bottom:0}
+.tab{display:none;flex-direction:column;padding-bottom:120px}
 .tab.active{display:flex;flex:1;overflow:hidden}
 
 /* ── CARDS ── */
@@ -165,7 +171,7 @@ input,textarea,select{font-size:16px!important}
   border-radius:22px;
   padding:18px;
   margin:0 16px 10px;
-  border:1px solid rgba(255,255,255,0.4);
+  border:1px solid rgba(126,206,196,0.12);
   box-shadow:var(--shadow);
 }
 .card-title{
@@ -570,7 +576,7 @@ input[type=range]::-webkit-slider-thumb{
 
 .et-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:56px 22px 16px;
+  padding:calc(env(safe-area-inset-top, 0px) + 18px) 22px 16px;
   border-bottom:1px solid var(--border);
 }
 .et-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
@@ -582,7 +588,7 @@ input[type=range]::-webkit-slider-thumb{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-radius:18px;margin-bottom:8px;
   cursor:pointer;touch-action:manipulation;
-  border:1px solid rgba(255,255,255,0.4);
+  border:1px solid rgba(126,206,196,0.12);
   box-shadow:var(--shadow-sm);
   width:100%;text-align:left;
   font-family:'DM Sans',sans-serif;
@@ -740,7 +746,7 @@ input[type=range]::-webkit-slider-thumb{
 .ob-welcome{
   flex:1;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  padding:48px 28px 32px;text-align:center;
+  padding:calc(env(safe-area-inset-top, 0px) + 28px) 28px 24px;text-align:center;
   background:#0d0f0e;
 }
 .ob-logo-mark{margin-bottom:24px}
@@ -764,7 +770,7 @@ input[type=range]::-webkit-slider-thumb{
 /* Inner pages */
 .ob-page-inner{
   flex:1;display:flex;flex-direction:column;
-  padding:52px 22px 28px;
+  padding:calc(env(safe-area-inset-top, 0px) + 24px) 22px 28px;
   overflow-y:auto;-webkit-overflow-scrolling:touch;
   background:#0d0f0e;
 }
@@ -805,7 +811,7 @@ input[type=range]::-webkit-slider-thumb{
 .ob-nav-row{
   display:flex;gap:10px;margin-top:24px;padding-bottom:16px;
 }
-.text-faint{font-size:10px;color:rgba(10,26,24,0.3);font-weight:500}
+.text-faint{font-size:10px;color:rgba(232,244,242,0.3);font-weight:500}
 
 /* ── FLOW ── */
 #flow-outer{flex:1}
@@ -813,7 +819,7 @@ input[type=range]::-webkit-slider-thumb{
   display:none;
   flex-direction:column;
   min-height:100%;
-  background:#7ecec4!important;
+  background:#0d0f0e!important;
   padding-bottom:120px;
 }
 .fstep[data-state=active]{
@@ -866,7 +872,7 @@ input[type=range]::-webkit-slider-thumb{
   background:var(--surface);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-radius:22px;padding:18px 20px;
-  border:1px solid rgba(255,255,255,0.4);
+  border:1px solid rgba(126,206,196,0.12);
   box-shadow:var(--shadow);
 }
 .energy-title{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
@@ -896,7 +902,7 @@ input[type=range]::-webkit-slider-thumb{
   background:var(--surface);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-radius:24px;
-  border:1px solid rgba(255,255,255,0.4);
+  border:1px solid rgba(126,206,196,0.12);
   box-shadow:var(--shadow);
   display:flex;flex-direction:column;align-items:center;
 }
@@ -1004,7 +1010,7 @@ input[type=range]::-webkit-slider-thumb{
 
 .run-history-row{
   display:flex;align-items:center;justify-content:space-between;
-  padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.2);
+  padding:11px 0;border-bottom:1px solid rgba(126,206,196,0.08);
 }
 .run-history-row:last-child{border-bottom:none}
 
@@ -1651,7 +1657,7 @@ function drawObRings(){
     {r:46, pct:.45, color:'#e8922a'},
     {r:64, pct:.88, color:'#a78bfa'}
   ];
-  let rot = Date.now()/8000;
+  let rot = Date.now()/2500;
   rings.forEach(({r,pct,color})=>{
     ctx.save();
     // track
@@ -2046,7 +2052,7 @@ function initMain(){
 function updateGreeting(){
   const h = new Date().getHours();
   const g = h<12?'Good morning':h<17?'Good afternoon':'Good evening';
-  document.getElementById('home-greeting').textContent = g+', '+S.user.name;
+  document.getElementById('home-greeting').textContent = g+', '+S.user.name.split(' ')[0];
   document.getElementById('home-date').textContent =
     new Date().toLocaleDateString('en-CA',{weekday:'long',month:'long',day:'numeric',year:'numeric'}).toUpperCase();
 }
@@ -2617,7 +2623,7 @@ function drawRunRing(ctx,cx,cy,r,runData,rotation,W){
   // dotted track
   ctx.save();
   ctx.setLineDash([4,6]);
-  ctx.strokeStyle='rgba(252,100,45,0.12)';
+  ctx.strokeStyle='rgba(252,100,45,0.3)';
   ctx.lineWidth=lw*0.5;
   ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.stroke();
   ctx.setLineDash([]);
@@ -2670,7 +2676,7 @@ function animateHomeOrbital(intentions, size, runData){
   const minR = W*0.1, maxR = W*0.44;
   const step = totalRings>1?(maxR-minR)/(totalRings-1):0;
 
-  _orbitalRotation += 0.003;
+  _orbitalRotation += 0.012;
   ctx.clearRect(0,0,W,H);
 
   const bg = ctx.createRadialGradient(cx,cy,0,cx,cy,W*0.4);
@@ -2706,7 +2712,7 @@ function renderHomeRunStrip(){
   const g = S.runGoal||{weeklyDays:4,defaultKm:5};
 
   el.style.display='block';
-  el.innerHTML = `<div style="background:var(--surface);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:16px 18px;border:1px solid rgba(255,255,255,0.4);box-shadow:var(--shadow)">
+  el.innerHTML = `<div style="background:var(--surface);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:16px 18px;border:1px solid rgba(126,206,196,0.12);box-shadow:var(--shadow)">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)">Today's run</div>
       ${todayRun
@@ -2736,7 +2742,7 @@ function renderHomeRunStrip(){
         </div>`;
       }).join('')}
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2)">
+    <div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid rgba(126,206,196,0.08)">
       <div style="font-size:11px;color:var(--dim);font-weight:500">${weekRuns.length}/${g.weeklyDays} runs this week</div>
       <div style="font-size:11px;font-weight:700;color:var(--ink)">${streak>0?streak+' day streak':'Start your streak'}</div>
     </div>
@@ -2860,7 +2866,7 @@ function animateTrackOrbital(intentions, size){
   const maxR = W * 0.44;
   const step = n > 1 ? (maxR - minR) / (n-1) : 0;
 
-  _orbitalRotation += 0.003;
+  _orbitalRotation += 0.012;
   ctx.clearRect(0,0,W,H);
 
   const bg = ctx.createRadialGradient(cx,cy,0,cx,cy,W*0.5);
@@ -2893,7 +2899,7 @@ function drawTrackRing(ctx,cx,cy,r,pct,color,intention,rotation,W){
   // track
   ctx.save();
   ctx.setLineDash([4,6]);
-  ctx.strokeStyle='rgba(168,232,224,0.08)';
+  ctx.strokeStyle='rgba(168,232,224,0.18)';
   ctx.lineWidth=lw*0.5;
   ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.stroke();
   ctx.setLineDash([]);
@@ -3195,11 +3201,11 @@ function renderHome(){
       </div>
       <div class="comeback-quote">You stepped away.<br>You came back.<br>That's the whole thing.</div>
       <div style="display:flex;gap:0;margin:16px 0">
-        <div style="flex:1;text-align:center;padding:14px 8px;background:rgba(255,255,255,0.2);border-radius:12px 0 0 12px;border:1px solid rgba(255,255,255,0.35)">
+        <div style="flex:1;text-align:center;padding:14px 8px;background:rgba(255,255,255,0.05);border-radius:12px 0 0 12px;border:1px solid rgba(126,206,196,0.12)">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:300;color:var(--ink)">${onTrackTotal}</div>
           <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:2px">days on track</div>
         </div>
-        <div style="flex:1;text-align:center;padding:14px 8px;background:rgba(255,255,255,0.2);border-left:1px solid rgba(255,255,255,0.2);border-radius:0 12px 12px 0;border:1px solid rgba(255,255,255,0.35)">
+        <div style="flex:1;text-align:center;padding:14px 8px;background:rgba(255,255,255,0.05);border-left:1px solid rgba(255,255,255,0.2);border-radius:0 12px 12px 0;border:1px solid rgba(126,206,196,0.12)">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:300;color:var(--ink)">${bestStreak}</div>
           <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:2px">best streak</div>
         </div>
@@ -3288,7 +3294,7 @@ function renderHome(){
         </div>`:''}
 
         ${logBtn ? `<div style="margin-top:10px">${logBtn}</div>` : ''}
-        <div style="display:flex;justify-content:flex-end;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.2)">
+        <div style="display:flex;justify-content:flex-end;margin-top:8px;padding-top:8px;border-top:1px solid rgba(126,206,196,0.08)">
           <button type="button" onclick="endIntention('${i.id}')" style="background:none;border:none;font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;padding:4px 0;touch-action:manipulation;opacity:.6">End intention</button>
         </div>
       </div>
@@ -3949,15 +3955,15 @@ function buildEnergyStatsHTML(){
   return '<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(10,26,24,0.08)">'
     + '<div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px">Energy check-ins</div>'
     + '<div style="display:flex;gap:0">'
-    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.2);border-radius:10px 0 0 10px;border:1px solid rgba(255,255,255,0.3)">'
+    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.05);border-radius:10px 0 0 10px;border:1px solid rgba(126,206,196,0.12)">'
     + '<div style="font-size:20px"></div>'
     + '<div style="font-family:Bricolage Grotesque,sans-serif;font-size:22px;font-weight:300;color:var(--ink)">'+es.great+'</div>'
     + '<div style="font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase">great</div></div>'
-    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3)">'
+    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.05);border:1px solid rgba(126,206,196,0.12)">'
     + '<div style="font-size:20px"></div>'
     + '<div style="font-family:Bricolage Grotesque,sans-serif;font-size:22px;font-weight:300;color:var(--ink)">'+es.fine+'</div>'
     + '<div style="font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase">fine</div></div>'
-    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.2);border-radius:0 10px 10px 0;border:1px solid rgba(255,255,255,0.3)">'
+    + '<div style="flex:1;text-align:center;padding:10px 4px;background:rgba(255,255,255,0.05);border-radius:0 10px 10px 0;border:1px solid rgba(126,206,196,0.12)">'
     + '<div style="font-size:20px">‍</div>'
     + '<div style="font-family:Bricolage Grotesque,sans-serif;font-size:22px;font-weight:300;color:var(--ink)">'+es.rough+'</div>'
     + '<div style="font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase">rough</div></div>'
@@ -4283,30 +4289,30 @@ function renderRunGoal(){
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:300;color:var(--g);line-height:1">${runDays}</div>
         <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:3px">runs this week</div>
       </div>
-      <div style="flex:1;padding:12px;background:rgba(255,255,255,0.2);border-radius:14px;text-align:center;border:1px solid rgba(255,255,255,0.3)">
+      <div style="flex:1;padding:12px;background:rgba(255,255,255,0.05);border-radius:14px;text-align:center;border:1px solid rgba(126,206,196,0.12)">
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:300;color:var(--ink);line-height:1">${totalKmWeek.toFixed(1)}</div>
         <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:3px">km this week</div>
       </div>
-      <div style="flex:1;padding:12px;background:rgba(255,255,255,0.2);border-radius:14px;text-align:center;border:1px solid rgba(255,255,255,0.3)">
+      <div style="flex:1;padding:12px;background:rgba(255,255,255,0.05);border-radius:14px;text-align:center;border:1px solid rgba(126,206,196,0.12)">
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:300;color:var(--ink);line-height:1">${getRunStreak()}</div>
         <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:3px">day streak</div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:12px">
+    <div style="border-top:1px solid rgba(126,206,196,0.08);padding-top:12px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="font-size:12px;font-weight:600;color:var(--dim)">Weekly target</div>
         <div style="display:flex;align-items:center;gap:10px">
-          <button type="button" onclick="adjustGoal('days',-1)" style="background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">−</button>
+          <button type="button" onclick="adjustGoal('days',-1)" style="background:rgba(255,255,255,0.05);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">−</button>
           <span style="font-size:14px;font-weight:700;color:var(--ink);min-width:60px;text-align:center">${g.weeklyDays}x / week</span>
-          <button type="button" onclick="adjustGoal('days',1)" style="background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">+</button>
+          <button type="button" onclick="adjustGoal('days',1)" style="background:rgba(255,255,255,0.05);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">+</button>
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between">
         <div style="font-size:12px;font-weight:600;color:var(--dim)">Default distance</div>
         <div style="display:flex;align-items:center;gap:10px">
-          <button type="button" onclick="adjustGoal('km',-1)" style="background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">−</button>
+          <button type="button" onclick="adjustGoal('km',-1)" style="background:rgba(255,255,255,0.05);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">−</button>
           <span style="font-size:14px;font-weight:700;color:var(--ink);min-width:60px;text-align:center">${g.defaultKm} km</span>
-          <button type="button" onclick="adjustGoal('km',1)" style="background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">+</button>
+          <button type="button" onclick="adjustGoal('km',1)" style="background:rgba(255,255,255,0.05);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--ink);touch-action:manipulation">+</button>
         </div>
       </div>
     </div>`;
@@ -4363,7 +4369,7 @@ function renderRunHistory(){
   }
   const totalKm = S.runs.reduce((a,r)=>a+parseFloat(r.km),0);
   el.innerHTML = `
-    <div style="display:flex;gap:16px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.2)">
+    <div style="display:flex;gap:16px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(126,206,196,0.08)">
       <div>
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:300;color:var(--ink)">${totalKm.toFixed(0)}</div>
         <div style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)">total km</div>
