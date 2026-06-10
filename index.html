@@ -1642,52 +1642,62 @@ function initOnboarding(){
   buildObSubGrid();
   _obSized = false;
   // wait a frame so the canvas is laid out, then start the loop
-  requestAnimationFrame(()=>{ if(!_obRAF) drawObRings(); });
+  startObRings();
 }
 
-function drawObRings(){
+function drawObRings(ts){
   const canvas = document.getElementById('ob-rings-canvas');
-  if(!canvas){ _obRAF=null; return; }
-  if(canvas.offsetParent===null && !document.getElementById('ob-p1')?.classList.contains('active')){ _obRAF=null; return; }
+  if(!canvas || !document.getElementById('ob-p1')?.classList.contains('active')){
+    _obRAF=null; return;
+  }
   const dpr = window.devicePixelRatio||1;
   const size = 160;
-  if(!_obSized){
+  if(canvas.width !== size*dpr){
     canvas.width = size*dpr;
     canvas.height = size*dpr;
     canvas.style.width = size+'px';
     canvas.style.height = size+'px';
-    _obSized = true;
   }
   const ctx = canvas.getContext('2d');
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.clearRect(0,0,size,size);
 
-  const t = Date.now()/1000;
-  // each ring: own speed, direction, breathing arc length
+  // smooth time from the rAF timestamp (monotonic, frame-accurate)
+  const t = (ts||0)/1000;
+  const c = size/2;
   const rings = [
-    {r:28, base:.55, breathe:.18, speed:.55, dir:1,  color:'#7ecec4'},
-    {r:46, base:.42, breathe:.22, speed:.38, dir:-1, color:'#e8922a'},
-    {r:64, base:.62, breathe:.15, speed:.30, dir:1,  color:'#a78bfa'}
+    {r:28, base:.55, breathe:.16, speed:14, dir:1,  phase:0,   color:'#7ecec4'},
+    {r:46, base:.45, breathe:.20, speed:-20, dir:1, phase:2.1, color:'#e8922a'},
+    {r:64, base:.62, breathe:.13, speed:26, dir:1,  phase:4.2, color:'#a78bfa'}
   ];
-  rings.forEach(({r,base,breathe,speed,dir,color},i)=>{
-    const pct = base + Math.sin(t*0.8 + i*2.1)*breathe;
-    const rot = -Math.PI/2 + dir*t*speed*2*Math.PI*0.12;
-    ctx.save();
+  for(let i=0;i<rings.length;i++){
+    const {r,base,breathe,speed,phase,color} = rings[i];
+    const pct = base + Math.sin(t*0.9 + phase)*breathe;
+    const rot = -Math.PI/2 + (t*speed*Math.PI/180);
+    // track
+    ctx.beginPath();
     ctx.setLineDash([3,5]);
-    ctx.strokeStyle='rgba(255,255,255,0.1)';
+    ctx.strokeStyle='rgba(255,255,255,0.09)';
     ctx.lineWidth=7;
-    ctx.beginPath();ctx.arc(size/2,size/2,r,0,Math.PI*2);ctx.stroke();
+    ctx.arc(c,c,r,0,Math.PI*2);
+    ctx.stroke();
     ctx.setLineDash([]);
+    // arc
+    ctx.beginPath();
     ctx.strokeStyle=color;
     ctx.lineWidth=7;
     ctx.lineCap='round';
     ctx.shadowColor=color;
     ctx.shadowBlur=10;
-    ctx.beginPath();
-    ctx.arc(size/2,size/2,r,rot,rot+pct*Math.PI*2);
+    ctx.arc(c,c,r,rot,rot+pct*Math.PI*2);
     ctx.stroke();
-    ctx.restore();
-  });
+    ctx.shadowBlur=0;
+  }
+  _obRAF = requestAnimationFrame(drawObRings);
+}
+
+function startObRings(){
+  if(_obRAF){ cancelAnimationFrame(_obRAF); _obRAF=null; }
   _obRAF = requestAnimationFrame(drawObRings);
 }
 
@@ -1716,7 +1726,7 @@ function obGoTo(n){
       el.style.animation='none';el.offsetHeight;
       el.style.animation=`slideUp ${.3+i*.04}s cubic-bezier(.4,0,.2,1) ${i*.04}s both`;
     });
-    if(n===1 && !_obRAF) drawObRings();
+    if(n===1) startObRings();
   }
 }
 
